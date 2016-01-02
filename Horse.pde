@@ -1,0 +1,4 @@
+class Horse extends Racer
+{
+  
+}
