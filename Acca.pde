@@ -1,0 +1,4 @@
+class Acca extends bet
+{
+  
+}

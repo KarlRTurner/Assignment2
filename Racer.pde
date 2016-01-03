@@ -1,4 +1,4 @@
-class Racer
+abstract class Racer
 {
   float speed;
   float weight;
