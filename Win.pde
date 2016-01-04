@@ -1,4 +1,4 @@
-class Win extends bet
+class Win extends Bet
 {
   
 }
