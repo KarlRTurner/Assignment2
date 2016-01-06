@@ -1,5 +1,6 @@
 class Horse extends Racer
 {
+  PVector place;
   Horse()
   {
     super();
