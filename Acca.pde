@@ -10,7 +10,8 @@ class Acca extends Bet
     {
       total*=odds.get(i);
     }
-    super.winnings = super.stake*total;
+    super.odds =total;
   }
+  
 }
 
