@@ -15,22 +15,21 @@ class Game
     this.team2=team2;
     odds1 = random(1, 2);
     odds2 = random(1, 2);
-    
-    score1= (int)random(0,8);
-    score2= (int)random(0,8);
+
+    score1= (int)random(0, 8);
+    score2= (int)random(0, 8);
   }
-  
+
   int whoWon()
   {
-    if(score1>score2)
+    if (score1>score2)
     {
       return team1;
     }
-    if(score2>score1)
+    if (score2>score1)
     {
       return team2;
-    }
-    else
+    } else
     {
       return 0;
     }

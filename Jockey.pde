@@ -1,6 +1,6 @@
 class Jockey extends Racer
 {
-  
+
   color colour;
   Jockey()
   {
