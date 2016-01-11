@@ -5,5 +5,4 @@ class Bet
   float winnings;
   
   
-  
 }
