@@ -6,6 +6,8 @@ void setup()
 void draw()
 {
   boolean start= false;
+  Bet cheeky;
+   cheeky =  new Acca();
   background(255);
   if (start==false)
   {

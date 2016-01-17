@@ -2,6 +2,11 @@ class Acca extends Bet
 {
   ArrayList<Integer> picks;
   ArrayList<Float> odds;
+  
+  Acca(int picks)
+  {
+    
+  }
 
   void winnngs()
   {
