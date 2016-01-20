@@ -17,5 +17,6 @@ class Acca extends Bet
     }
     super.odds =total;
   }
+  
 }
 
