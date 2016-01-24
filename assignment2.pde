@@ -1,13 +1,13 @@
 void setup()
 {
-  size(1600, 900);
+  size(2100, 900);
 }
 
 void draw()
 {
   boolean start= false;
   Bet cheeky;
-   cheeky =  new Acca();
+  cheeky =  new Acca();
   background(255);
   if (start==false)
   {
