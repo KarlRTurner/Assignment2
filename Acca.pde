@@ -11,15 +11,23 @@ class Acca extends Bet
       picks[i] = pick.get(i);
     }
   }
+  
+  void oddsCalc()
+  {
+    
+  }
 
   void winnngs()
   {
     float total;
     /*for (int i =0; i > odds.size (); i++)
-    {
-      total*=odds.get(i);
-    }
-    super.odds =total;*/
+     {
+     total*=odds.get(i);
+     }
+     super.odds =total;*/
+
+    winnings=(pick*stake)+stake;
+    return winnings;
   }
 }
 

@@ -6,22 +6,17 @@ class Game
   int score1;
   int score2;
 
-  float odds1;
-  float odds2;
-
   Game(int team1, int team2)
   {
     this.team1=team1;
     this.team2=team2;
-    odds1 = random(1, 2);
-    odds2 = random(1, 2);
   }
 
   int whoWon()
   {
     score1= (int)random(0, 8);
     score2= (int)random(0, 8);
-    
+
     if (score1>score2)
     {
       return team1;
