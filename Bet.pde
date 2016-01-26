@@ -1,4 +1,4 @@
-class Bet
+abstract class Bet
 {
   float stake;
   float odds;

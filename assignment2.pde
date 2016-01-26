@@ -1,13 +1,16 @@
 void setup()
 {
-  size(2100, 900);
+  size(1800, 900);
 }
 
 void draw()
 {
-  boolean start= false;
+  boolean start = false;
+  ArrayList<Integer> pick;
+  pick = new ArrayList<Integer>();
+  pick.add(5);
   Bet cheeky;
-  cheeky =  new Acca();
+  cheeky =  new Acca(pick);
   background(255);
   if (start==false)
   {
@@ -20,9 +23,7 @@ void intro()
 {
   PImage photo;
   photo = loadImage("race.jpg");
-  //image(photo, width/4, height/3);
   image(photo, 0, 0,width,height);
-
   textFont(loadFont("ArialNarrow-BoldItalic-150.vlw"), 150);
   
   int ouline=3;

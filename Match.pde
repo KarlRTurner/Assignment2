@@ -15,13 +15,13 @@ class Game
     this.team2=team2;
     odds1 = random(1, 2);
     odds2 = random(1, 2);
-
-    score1= (int)random(0, 8);
-    score2= (int)random(0, 8);
   }
 
   int whoWon()
   {
+    score1= (int)random(0, 8);
+    score2= (int)random(0, 8);
+    
     if (score1>score2)
     {
       return team1;
