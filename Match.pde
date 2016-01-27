@@ -1,4 +1,4 @@
-class Game
+class Match
 {
   int team1;
   int team2;
@@ -6,7 +6,7 @@ class Game
   int score1;
   int score2;
 
-  Game(int team1, int team2)
+  Match(int team1, int team2)
   {
     this.team1=team1;
     this.team2=team2;
