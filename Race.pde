@@ -9,11 +9,15 @@ class Race
     this.horses = new int[horses.size()];
     this.jockies = new int[jockies.size()];
 
-    for (int i=0; i<jockies.length; i++)
+    for (int i=0; i< jockies.size(); i++)
     {
-      horses[i] = horses.get(i);
-      jockies[i] = jockies.get(i);
+      this.horses[i] = horses.get(i);
+      this.jockies[i] = jockies.get(i);
     }
   }
+  
+  
+  
+  
 }
 

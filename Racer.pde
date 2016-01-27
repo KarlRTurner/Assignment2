@@ -8,7 +8,7 @@ abstract class Racer
   Racer()
   {
     speed = random(1, 10);
-    number = (int)random(0, 99);
+    id = (int)random(0, 99);
   }
 }//end class
 

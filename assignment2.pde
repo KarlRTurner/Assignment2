@@ -3,6 +3,9 @@ void setup()
   size(1800, 900);
 }
 
+ArrayList<Bet> wagers;
+ArrayList<Integer> pick;
+
 void draw()
 {
   boolean start = false;
@@ -18,6 +21,11 @@ void draw()
   }
 }
 
+ArrayList<Bet> wager;
+ArrayList<Race> GP;
+ArrayList<Racer> entries;
+ArrayList<Match> fixtures;
+ArrayList<Team> league;
 
 void intro()
 {
