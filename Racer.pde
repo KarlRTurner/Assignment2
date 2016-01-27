@@ -2,7 +2,7 @@ abstract class Racer
 {
   float speed;
   float weight;
-  int number;
+  int id;
   String name;
 
   Racer()

@@ -5,7 +5,7 @@ class Team
   int wins;
   int losses;
   int draws;
-  float current_odds
+  float current_odds;
 
   Team(int id, String name) 
   {

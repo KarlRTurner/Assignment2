@@ -8,7 +8,7 @@ class Win extends Bet
     super.stake = stake;
   }
   
-  float winnings()
+  float payout()
   {
     winnings=(odds*stake)+stake;
     return winnings;

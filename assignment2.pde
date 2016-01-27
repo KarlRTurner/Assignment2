@@ -10,7 +10,7 @@ void draw()
   pick = new ArrayList<Integer>();
   pick.add(5);
   Bet cheeky;
-  cheeky =  new Acca(pick);
+  cheeky =  new Acca(pick, 2.50);
   background(255);
   if (start==false)
   {
