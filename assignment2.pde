@@ -6,8 +6,9 @@ void setup()
   GP = new ArrayList<Race>();
   entries = new ArrayList<Racer>();
   fixtures = new ArrayList<Match>();
-  league = new ArrayList<Team>() ;
+  league = new ArrayList<Team>();
 }
+
 
 ArrayList<Bet> wagers;
 ArrayList<Race> GP;
