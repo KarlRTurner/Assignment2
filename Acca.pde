@@ -10,13 +10,12 @@ class Acca extends Bet
     {
       picks[i] = pick.get(i);
     }
-    
+
     this.stake=stake;
   }
-  
+
   void oddsCalc()
   {
-    
   }
 
   float payout()
@@ -32,4 +31,3 @@ class Acca extends Bet
     return winnings;
   }
 }
-
