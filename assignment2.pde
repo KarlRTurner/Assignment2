@@ -7,9 +7,12 @@ void setup()
   entries = new ArrayList<Racer>();
   fixtures = new ArrayList<Match>();
   league = new ArrayList<Team>();
+  start = false;
+  
+   photo = loadImage("race.jpg");
 }
-
-
+boolean start;
+PImage photo;
 ArrayList<Bet> wagers;
 ArrayList<Race> GP;
 ArrayList<Racer> entries;
@@ -18,13 +21,13 @@ ArrayList<Team> league;
 
 void draw()
 {
-  boolean start = false;
-  ArrayList<Integer> pick;
-  pick = new ArrayList<Integer>();
-  pick.add(5);
-  Bet cheeky;
-  cheeky =  new Acca(pick, 2.50);
   background(255);
+  if (keyPressed)
+    {
+      println(start);
+      start=true;
+    }
+  
   if (start==false)
   {
     intro();
@@ -35,12 +38,24 @@ void draw()
 
 void intro()
 {
-  PImage photo;
-  photo = loadImage("race.jpg");
-  image(photo, 0, 0, width, height);
-  textFont(loadFont("ArialNarrow-BoldItalic-150.vlw"), 150);
-
+  
   int ouline=3;
+  PFont enter;
+  PFont title;
+
+ 
+  image(photo, 0, 0, width, height);
+  enter = createFont("Arial", 32);
+  title =loadFont("ArialNarrow-BoldItalic-150.vlw");
+
+  textFont(enter, 30);
+
+  fill(#00ffff);
+  textAlign(CENTER);
+  text("Press Enter to continue", width/2, height*0.75);
+
+
+  textFont(title, 150);
 
   fill(0);
   textAlign(CENTER, CENTER);
