@@ -8,7 +8,7 @@ class Splash
 
   Splash()
   {
-    photo = loadImage("race.jpg");
+    photo = loadImage("horses1.jpg");
     enter = createFont("Arial", 32);
     title =loadFont("ArialNarrow-BoldItalic-150.vlw");
     ouline=3;

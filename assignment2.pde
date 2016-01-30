@@ -8,11 +8,11 @@ void setup()
   fixtures = new ArrayList<Match>();
   league = new ArrayList<Team>();
   start = false;
-
+  intro = new Splash();
   
 }
 boolean start;
-
+Splash intro;
 ArrayList<Bet> wagers;
 ArrayList<Race> GP;
 ArrayList<Racer> entries;
@@ -30,7 +30,6 @@ void draw()
 
   if (start==false)
   {
-    Splash intro = new Splash();
     intro.display();
   }
 }
