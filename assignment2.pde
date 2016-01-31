@@ -21,7 +21,7 @@ ArrayList<Team> league;
 
 void draw()
 {
-  background(#ffffff);
+  background(#f0f0f0);
   if (keyPressed && start== false)
     {
       println(start);

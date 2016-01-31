@@ -56,7 +56,7 @@ class Menus
     text("2016", (width/2)+ouline, (height/2)-ouline);
     text("2016", (width/2)-ouline, (height/2)-ouline);
 
-    fill(#e1e1e1);
+    fill(#ffffff);
     textAlign(CENTER, CENTER);
     text("Gambling Simulator", width/2, height/3);
     textAlign(LEFT);
@@ -79,7 +79,7 @@ class Menus
     text("2016", (width/2)+ouline, (height*(0.3))-ouline);
     text("2016", (width/2)-ouline, (height*(0.3))-ouline);
 
-    fill(#e1e1e1);
+    fill(#ffffff);
     textAlign(CENTER, CENTER);
     text("Gambling Simulator", width/2, height*(0.13));
     textAlign(LEFT);
@@ -87,8 +87,11 @@ class Menus
     stroke(#226644);
 
     //horse
+
+
     fill(#006600);
     rect(width/2, height/3, -width/3, height/4);
+
     //football
     fill(#226644);
     rect(width/2, height/3, width/3, height/4);
@@ -96,7 +99,15 @@ class Menus
     fill(#0000ff);
     rect(width/2, (height/3)*2, -width/3, height/4);
     //proceed
-    fill(#e1e1e1);
+    fill(#660066);
     rect(width/2, (height/3)*2, width/3, height/4);
+
+    textFont(info, 40);
+    fill(#e1e1e1);
+    textAlign(LEFT, TOP);
+    text(" Football", width/2, height/3);
+    text(" Proceed to next week", width/2, (height/3)*2);
+    text(" Horses", (width/2) -(width/3), height/3);
+    text(" Bets", (width/2) -(width/3), (height/3)*2);
   }
 }
