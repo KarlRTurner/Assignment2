@@ -8,11 +8,12 @@ void setup()
   league = new ArrayList<Team>();
   start = false;
   intro = new Splash();
-
-  status=createFont("Yu Gothic", 11);
+  status = new Status();
+  
 }
-PFont status;
+
 boolean start;
+Status status;
 Splash intro;
 ArrayList<Bet> wagers;
 ArrayList<Race> GP;
@@ -33,25 +34,7 @@ void draw()
     }
   } else
   {
+    status.statusBar();
   }
-  statusBar();
+  
 }//draw
-
-void statusBar()
-{
-  float cash=500;
-  int week=0;
-  float barHeight=height/20;
-
-  stroke(#999999);
-  fill(#999999);
-  rect(0, 0, width, barHeight);
-
-  textAlign(RIGHT, CENTER);
-  fill(#ffffff);
-  textFont(status, 25);
-
-  text("Cash: €" + cash, width, barHeight/2.6);
-  textAlign(LEFT, CENTER);
-  text("Week: " + week, 0, barHeight/2.6);
-}
