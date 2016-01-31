@@ -1,4 +1,4 @@
- class Menus
+class Menus
 {
   PImage photo;
   int ouline;
@@ -61,5 +61,37 @@
     text("Gambling Simulator", width/2, height/3);
     textAlign(LEFT);
     text("2016", width/2, height/2);
+  }
+
+  void mainMenu()
+  {
+    stroke(#226644);
+
+    fill(#226644);
+    textSize(width/25);
+    text("", width/2, height/10);
+
+    fill(#e1e1e1);
+    rect(width/2, height/3, -width/3, height/3);
+    rect(width/2, height/3, width/3, height/3);
+    
+    textFont(title, 150);
+    fill(0);
+    textAlign(CENTER, CENTER);
+    text("Gambling Simulator", (width/2)+ouline, (height*(0.13))+ouline);
+    text("Gambling Simulator", (width/2)-ouline, (height*(0.13))+ouline);
+    text("Gambling Simulator", (width/2)+ouline, (height*(0.13))-ouline);
+    text("Gambling Simulator", (width/2)-ouline, (height*(0.13))-ouline);
+    textAlign(LEFT);
+    text("2016", (width/2)+ouline, (height*(0.3))+ouline);
+    text("2016", (width/2)-ouline, (height*(0.3))+ouline);
+    text("2016", (width/2)+ouline, (height*(0.3))-ouline);
+    text("2016", (width/2)-ouline, (height*(0.3))-ouline);
+
+    fill(#e1e1e1);
+    textAlign(CENTER, CENTER);
+    text("Gambling Simulator", width/2, height*(0.13));
+    textAlign(LEFT);
+    text("2016", width/2, height*(0.3));
   }
 }
