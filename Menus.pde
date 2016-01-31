@@ -65,16 +65,7 @@ class Menus
 
   void mainMenu()
   {
-    stroke(#226644);
 
-    fill(#226644);
-    textSize(width/25);
-    text("", width/2, height/10);
-
-    fill(#e1e1e1);
-    rect(width/2, height/3, -width/3, height/3);
-    rect(width/2, height/3, width/3, height/3);
-    
     textFont(title, 150);
     fill(0);
     textAlign(CENTER, CENTER);
@@ -93,5 +84,19 @@ class Menus
     text("Gambling Simulator", width/2, height*(0.13));
     textAlign(LEFT);
     text("2016", width/2, height*(0.3));
+    stroke(#226644);
+
+    //horse
+    fill(#006600);
+    rect(width/2, height/3, -width/3, height/4);
+    //football
+    fill(#226644);
+    rect(width/2, height/3, width/3, height/4);
+    //bets
+    fill(#0000ff);
+    rect(width/2, (height/3)*2, -width/3, height/4);
+    //proceed
+    fill(#e1e1e1);
+    rect(width/2, (height/3)*2, width/3, height/4);
   }
 }
