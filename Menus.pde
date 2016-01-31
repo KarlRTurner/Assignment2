@@ -1,19 +1,39 @@
- class Splash
+ class Menus
 {
   PImage photo;
   int ouline;
   PFont enter;
   PFont title;
+  PFont info;
 
-  Splash()
+  Menus()
   {
     photo = loadImage("horses1.jpg");
     enter = createFont("Arial", 32);
     title = loadFont("ArialNarrow-BoldItalic-150.vlw");
+    info=createFont("Yu Gothic", 11);
     ouline=3;
   }
 
-  void display()
+  void statusBar()
+  {
+    float cash=500;
+    int week=0;
+    float barHeight=height/20;
+
+    stroke(#999999);
+    fill(#999999);
+    rect(0, 0, width, barHeight);
+
+    textAlign(RIGHT, CENTER);
+    fill(#ffffff);
+    textFont(info, 25);
+
+    text("€" + cash + " Week " + week, width-10, barHeight/2.6);
+  }
+
+
+  void splash()
   {
     image(photo, 0, 0, width, height);
 
