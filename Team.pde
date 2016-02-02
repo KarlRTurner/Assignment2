@@ -5,6 +5,7 @@ class Team
   int wins;
   int losses;
   int draws;
+  int gd;
   float current_odds;
 
   Team(int id, String name) 

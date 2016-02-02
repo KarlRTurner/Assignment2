@@ -9,6 +9,16 @@ void setup()
   league = new ArrayList<Team>();
   start = false;
   intro = new Menus();
+  
+  String[] line = loadStrings("teams.txt");
+
+  //loop through the data
+  for (int i=0; i<line.length; i++)
+  {
+    league.add(new Team(i,line[i]));
+  }
+  
+  tinder();
 }
 
 boolean start;
@@ -36,4 +46,13 @@ void draw()
     intro.statusBar();
   }*/
   intro.football();
+  intro.statusBar();
 }//draw
+
+void tinder()
+{
+  for (int i=0; i<league.size(); i+=2)
+  {
+    fixtures.add(new Match(i,i+1));
+  }
+}

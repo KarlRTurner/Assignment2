@@ -115,6 +115,7 @@ class Menus
   {
     fill(#00BDFF);
     rect(width/2, -1, (width/2)+1, height+1);
+
     textFont(info, 30);
     textAlign(CENTER);
     fill(#000000);
@@ -123,23 +124,41 @@ class Menus
     {
       noFill();
       rect(width/2, (height/4)+(i*50)-35, (width/2), 50);
-      text("Home Team" + i + " vs Away Team" + i, (width*0.75), (height/4)+(i*50));
+      text("1.25    " + league.get(fixtures.get(i).team1).name +   " vs "  + league.get(fixtures.get(i).team2).name + "    1.67", (width*0.75), (height/4)+(i*50));
+    }
+    text("Place bet", (width*0.75), (height/4)+(11*50));
+
+
+    
+    if (pick%2==0)
+    {
+      ellipse((width/2)+(width/20), (height/4)+((pick/2)*50)-15, 20, 20);
+    } else
+    {
+      ellipse(width-(width/20), (height/4)+((pick/2)*50)-15, 20, 20);
     }
 
-    text("Place bet", (width*0.75), (height/4)+(11*50));
-    
-    text("League Table", (width/4), (height/8)-40);
+
+
     textAlign(LEFT);
+    fill(#000000);
+    text("Team", (width/20), (height/8)-40);
+    text("W", (width/20)+(width/10), (height/8)-40);
+    text("D", (width/20)+(width/10)+100, (height/8)-40);
+    text("L", (width/20)+(width/10)+200, (height/8)-40);
+    text("GD", (width/20)+(width/10)+300, (height/8)-40);
+    text("Pts", (width/20)+(width/10)+400, (height/8)-40);
+
+    textFont(info, 24);
     for (int i=0; i<20; i++)
     {
-      noFill();
-      //rect(0, (height/4)+(i*50)-35, (width/2), 50);
-      text("team" + i, (width/20), (height/8)+(i*40));
-       text("W" , (width/20)+(width/10), (height/8)+(i*40));
-      text("D" + i, (width/20)+(width/10)+400, (height/8)+(i*40));
-      text("L" + i, (width/20)+(width/10)+100, (height/8)+(i*40));
-      text("GD" + i, (width/20)+(width/10)+200, (height/8)+(i*40));
-      text("Pts" + i, (width/20)+(width/10)+300, (height/8)+(i*40));
+      text(league.get(i).name, (width/21), (height/8)+(i*40));
+      text(league.get(i).wins, (width/20)+(width/10), (height/8)+(i*40));
+      text(league.get(i).draws, (width/20)+(width/10)+400, (height/8)+(i*40));
+      text(league.get(i).losses, (width/20)+(width/10)+100, (height/8)+(i*40));
+      text(league.get(i).gd, (width/20)+(width/10)+200, (height/8)+(i*40));
+      int pts = (league.get(i).wins*3 )+(league.get(i).draws);
+      text(pts, (width/20)+(width/10)+300, (height/8)+(i*40));
     }
   }
 }
