@@ -15,9 +15,4 @@ class Race
       this.jockies[i] = jockies.get(i);
     }
   }
-  
-  
-  
-  
 }
-

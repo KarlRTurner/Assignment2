@@ -5,7 +5,7 @@ class Menus
   PFont enter;
   PFont title;
   PFont info;
-
+  int selected;
   Menus()
   {
     photo = loadImage("horses1.jpg");
@@ -93,7 +93,7 @@ class Menus
     rect(width/2, height/3, -width/3, height/4);
 
     //football
-    fill(#226644);
+    fill(#00BDFF);
     rect(width/2, height/3, width/3, height/4);
     //bets
     fill(#0000ff);
@@ -109,5 +109,37 @@ class Menus
     text(" Proceed to next week", width/2, (height/3)*2);
     text(" Horses", (width/2) -(width/3), height/3);
     text(" Bets", (width/2) -(width/3), (height/3)*2);
+  }
+
+  void football()
+  {
+    fill(#00BDFF);
+    rect(width/2, -1, (width/2)+1, height+1);
+    textFont(info, 30);
+    textAlign(CENTER);
+    fill(#000000);
+    text("Game Week", (width*0.75), (height/4)-40);
+    for (int i=0; i<10; i++)
+    {
+      noFill();
+      rect(width/2, (height/4)+(i*50)-35, (width/2), 50);
+      text("Home Team" + i + " vs Away Team" + i, (width*0.75), (height/4)+(i*50));
+    }
+
+    text("Place bet", (width*0.75), (height/4)+(11*50));
+    
+    text("League Table", (width/4), (height/8)-40);
+    textAlign(LEFT);
+    for (int i=0; i<20; i++)
+    {
+      noFill();
+      //rect(0, (height/4)+(i*50)-35, (width/2), 50);
+      text("team" + i, (width/20), (height/8)+(i*40));
+       text("W" , (width/20)+(width/10), (height/8)+(i*40));
+      text("D" + i, (width/20)+(width/10)+400, (height/8)+(i*40));
+      text("L" + i, (width/20)+(width/10)+100, (height/8)+(i*40));
+      text("GD" + i, (width/20)+(width/10)+200, (height/8)+(i*40));
+      text("Pts" + i, (width/20)+(width/10)+300, (height/8)+(i*40));
+    }
   }
 }

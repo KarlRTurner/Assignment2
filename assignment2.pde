@@ -1,7 +1,7 @@
 void setup()
 {
   size(1600, 900);
-  
+
   wagers= new ArrayList<Bet>();
   GP = new ArrayList<Race>();
   entries = new ArrayList<Racer>();
@@ -22,11 +22,11 @@ ArrayList<Team> league;
 void draw()
 {
   background(#f0f0f0);
-  if (keyPressed && start== false)
-    {
-      println(start);
-      start=true;
-    }
+  /*if (keyPressed && start== false)
+  {
+    println(start);
+    start=true;
+  }
   if (start==false)
   {
     intro.splash();
@@ -34,5 +34,6 @@ void draw()
   {
     intro.mainMenu();
     intro.statusBar();
-  }
+  }*/
+  intro.football();
 }//draw

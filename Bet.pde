@@ -4,5 +4,4 @@ abstract class Bet
   float odds;
   float winnings;
   int week;
-  
 }
