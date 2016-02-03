@@ -129,7 +129,7 @@ class Menus
     text("Place bet", (width*0.75), (height/4)+(11*50));
 
 
-    
+    int pick =1;
     if (pick%2==0)
     {
       ellipse((width/2)+(width/20), (height/4)+((pick/2)*50)-15, 20, 20);
