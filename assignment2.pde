@@ -9,15 +9,14 @@ void setup()
   league = new ArrayList<Team>();
   start = false;
   intro = new Menus();
-  
-  frameRate(1);
+  save = new User();
+
+  //frameRate(120);
 
   String[] line = loadStrings("teams.txt");
-
-  //loop through the data
   for (int i=0; i<line.length; i++)
   {
-    league.add(new Team(i, line[i]));
+    league.add(new Team(i+1, line[i]));
   }
 
   tinder();
@@ -26,6 +25,7 @@ void setup()
 int week;
 boolean start;
 Menus intro;
+User save;
 ArrayList<Bet> wagers;
 ArrayList<Race> GP;
 ArrayList<Racer> entries;
@@ -48,31 +48,41 @@ void draw()
    intro.mainMenu();
    intro.statusBar();
    }*/
-   
+
   intro.football();
   intro.statusBar();
-  tinder();
-   week++;
 }//draw
 
-void tinder()
-{
-  
+void tinder() {
+
   fixtures.clear();
-  
-  
   for (int i=0; i<league.size(); i+=2)
   {
 
     int h=  ((i+(week%19))%19) + 1 ;
     int a =  ((i+(1+week)%19)%19) + 1 ;
-    println(h, a);
     if (i==0)
     {
       fixtures.add(new Match(0, a));
     } else
     {
-      fixtures.add(new Match( h,a));
+      fixtures.add(new Match(h, a));
     }
   }
+
+  Team temp = new Team(-1, "temp");
+  for (int i = 1; i < league.size(); i++)
+  {
+    for (int j = i; j > 0; j--)
+    {
+      if (league.get(j).pts > league.get(j-1).pts) 
+      {
+        temp.pos = league.get(j).pos;
+        league.get(j).setPos(league.get(j-1).pos);
+        league.get(j-1).setPos( temp.pos);
+      }
+    }
+  }
+  
+  save.week++;
 }

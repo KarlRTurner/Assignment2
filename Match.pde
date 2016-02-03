@@ -17,17 +17,20 @@ class Match
     score1= (int)random(0, 8);
     score2= (int)random(0, 8);
 
-    if (score1>score2)
+    league.get(team1).gameday(score1, score2);
+
+    league.get(team2).gameday(score2, score1);
+
+
+    if (score1> score2)
     {
       return team1;
-    }
-    if (score2>score1)
+    } else if (score1== score2)
     {
-      return team2;
+      return -1;
     } else
     {
-      return 0;
+      return team2;
     }
   }
 }
-

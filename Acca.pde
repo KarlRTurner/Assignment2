@@ -5,7 +5,7 @@ class Acca extends Bet
   Acca(ArrayList<Integer> pick, float stake)
   {
     this.picks = new int[pick.size()];
-
+    
     for (int i=0; i<picks.length; i++)
     {
       picks[i] = pick.get(i);
@@ -14,20 +14,18 @@ class Acca extends Bet
     this.stake=stake;
   }
 
-  void oddsCalc()
-  {
-  }
+
 
   float payout()
   {
-    float total;
-    /*for (int i =0; i > odds.size (); i++)
-     {
-     total*=odds.get(i);
-     }
-     super.odds =total;*/
+    float total=0;
+    for (int i =0; i < picks.length; i++)
+    {
+      total*=league.get(picks[i]).current_odds;
+    }
+    super.odds =total;
 
-    //winnings=(picks*stake)+stake;
+    winnings=(odds*stake)+stake;
     return winnings;
   }
 }

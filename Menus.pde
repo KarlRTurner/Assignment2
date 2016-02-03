@@ -150,15 +150,15 @@ class Menus
     text("Pts", (width/20)+(width/10)+400, (height/8)-40);
 
     textFont(info, 24);
+
     for (int i=0; i<20; i++)
     {
       text(league.get(i).name, (width/21), (height/8)+(i*40));
       text(league.get(i).wins, (width/20)+(width/10), (height/8)+(i*40));
-      text(league.get(i).draws, (width/20)+(width/10)+400, (height/8)+(i*40));
-      text(league.get(i).losses, (width/20)+(width/10)+100, (height/8)+(i*40));
-      text(league.get(i).gd, (width/20)+(width/10)+200, (height/8)+(i*40));
-      int pts = (league.get(i).wins*3 )+(league.get(i).draws);
-      text(pts, (width/20)+(width/10)+300, (height/8)+(i*40));
+      text(league.get(i).draws, (width/20)+(width/10)+100, (height/8)+(i*40));
+      text(league.get(i).losses, (width/20)+(width/10)+200, (height/8)+(i*40));
+      text(league.get(i).gd, (width/20)+(width/10)+300, (height/8)+(i*40));
+      text(league.get(i).pts, (width/20)+(width/10)+400, (height/8)+(i*40));
     }
   }
 }
