@@ -4,23 +4,27 @@ void setup()
 
   wagers= new ArrayList<Bet>();
   GP = new ArrayList<Race>();
-  entries = new ArrayList<Racer>();
+  rider = new ArrayList<Jockey>();
+  equine = new ArrayList<Horse>();
   fixtures = new ArrayList<Match>();
   league = new ArrayList<Team>();
   start = false;
   intro = new Menus();
   save = new User();
 
-  //frameRate(120);
-
   String[] line = loadStrings("teams.txt");
   for (int i=0; i<line.length; i++)
   {
     league.add(new Team(i+1, line[i]));
   }
+  
+  for (int i=0; i<10; i++)
+  {
+    equine.add(new Horse());
+    rider.add(new Jockey());
+  }
 
   tinder();
-  week=0;
 }
 int week;
 boolean start;
@@ -28,7 +32,8 @@ Menus intro;
 User save;
 ArrayList<Bet> wagers;
 ArrayList<Race> GP;
-ArrayList<Racer> entries;
+ArrayList<Jockey> rider;
+ArrayList<Horse> equine;
 ArrayList<Match> fixtures;
 ArrayList<Team> league;
 
@@ -49,7 +54,7 @@ void draw()
    intro.statusBar();
    }*/
 
-  intro.football();
+  intro.horse();
   intro.statusBar();
 }//draw
 
@@ -69,20 +74,29 @@ void tinder() {
       fixtures.add(new Match(h, a));
     }
   }
+  int g=0;
 
-  Team temp = new Team(-1, "temp");
-  for (int i = 1; i < league.size(); i++)
+  for (int i = 0; i < league.size(); i++)
   {
-    for (int j = i; j > 0; j--)
+    for (int j = 0; j < league.size(); j++)
     {
-      if (league.get(j).pts > league.get(j-1).pts) 
+      if (i!=j)
       {
-        temp.pos = league.get(j).pos;
-        league.get(j).setPos(league.get(j-1).pos);
-        league.get(j-1).setPos( temp.pos);
+        if (league.get(i).pts > league.get(j).pts)
+        {
+          g++;
+        } else if (league.get(i).pts == league.get(j).pts && league.get(i).gd > league.get(j).gd)
+        {
+          g++;
+        } else if (league.get(i).pts == league.get(j).pts && league.get(i).gd == league.get(j).gd && 0>league.get(i).name.compareTo(league.get(j).name))
+        {
+          g++;
+        }
       }
     }
+    league.get(i).setPos(19-g);
+    g=0;
   }
-  
+
   save.week++;
 }

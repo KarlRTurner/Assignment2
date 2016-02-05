@@ -4,6 +4,7 @@ abstract class Racer
   float weight;
   int id;
   String name;
+  float odds;
 
   Racer()
   {
@@ -11,4 +12,3 @@ abstract class Racer
     id = (int)random(0, 99);
   }
 }//end class
-

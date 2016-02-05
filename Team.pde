@@ -13,6 +13,7 @@ class Team
   {
     this.pos=pos;
     this.name= name;
+    current_odds=random(1.00, 2.00);
   }
   
   void setPos(int pos)

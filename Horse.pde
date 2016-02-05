@@ -5,6 +5,8 @@ class Horse extends Racer
   {
     super();
     weight= random(900, 1100);
+    String[] line = loadStrings("horse.txt");
+    name=line[(int)random(0,line.length)];
   }
 
   void display()
