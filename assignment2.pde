@@ -2,7 +2,7 @@ void setup()
 {
   size(1600, 900);
 
-  wagers= new ArrayList<Bet>();
+  wager= new ArrayList<Bet>();
   GP = new ArrayList<Race>();
   rider = new ArrayList<Jockey>();
   equine = new ArrayList<Horse>();
@@ -17,7 +17,7 @@ void setup()
   {
     league.add(new Team(i+1, line[i]));
   }
-  
+
   for (int i=0; i<10; i++)
   {
     equine.add(new Horse());
@@ -30,7 +30,7 @@ int week;
 boolean start;
 Menus intro;
 User save;
-ArrayList<Bet> wagers;
+ArrayList<Bet> wager;
 ArrayList<Race> GP;
 ArrayList<Jockey> rider;
 ArrayList<Horse> equine;
@@ -54,7 +54,7 @@ void draw()
    intro.statusBar();
    }*/
 
-  intro.horse();
+  intro.bet();
   intro.statusBar();
 }//draw
 

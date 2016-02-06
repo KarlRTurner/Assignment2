@@ -177,7 +177,7 @@ class Menus
     fill(#000000);
     text("Race Week " + save.week, (width*0.75), (height/5));
     text("Place bet", (width*0.75), (height/4)+(11*50));
-    
+
     for (int i=0; i<equine.size(); i++)
     {
       noFill();
@@ -199,6 +199,54 @@ class Menus
     for (int j=0; j<10; j++)
     {
       text(rider.get(j).name, (width/20), (height/4)+(j*50));
+    }
+  }
+
+  void bet()
+  {
+    fill(#DE3838);
+    rect(width/2, -1, (width/2)+1, height+1);
+    fill(#00A0DE);
+    rect(0, -1, (width/2)+1, height+1);
+    textFont(info, 30);
+    textAlign(CENTER);
+    fill(#000000);
+    if (wager.size()>=10)
+    {
+      text("Your Bottom 10 bets", (width*0.75), (height/5));
+
+      for (int i=0; i<0; i++)
+      {
+        noFill();
+        rect(width/2, (height/4)+(i*50)-35, (width/2), 50);
+        textAlign(RIGHT);
+        text(wager.get(i).winnings, (width*0.99), (height/4)+(i*50));
+        textAlign(CENTER);
+        text(wager.get(i).odds, (width*0.75), (height/4)+(i*50));
+        textAlign(LEFT);
+        text(wager.get(i).stake, (width*0.75), (height/4)+(i*50));
+      }
+
+      textFont(info, 30);
+      textAlign(CENTER);
+      fill(#000000);
+      text("Your Top 10 bets", (width*0.25), (height/5));
+
+      for (int i=wager.size(); i>wager.size()-10; i--)
+      {
+        noFill();
+        rect(0, (height/4)+(i*50)-35, 0, 50);
+        textAlign(RIGHT);
+        text(wager.get(i).winnings, (width*0.01), (height/4)+(i*50));
+        textAlign(CENTER);
+        text(wager.get(i).odds, (width*0.25), (height/4)+(i*50));
+        textAlign(LEFT);
+        text(wager.get(i).stake, (width*0.25), (height/4)+(i*50));
+      }
+    } else
+    {
+      textAlign(CENTER);
+      text("You must have atleast ten bets to see your record", (width*0.50), (height/5));
     }
   }
 }
