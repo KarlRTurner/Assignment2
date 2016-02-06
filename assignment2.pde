@@ -23,6 +23,11 @@ void setup()
     equine.add(new Horse());
     rider.add(new Jockey());
   }
+  
+  for (int i=0; i<20; i++)
+  {
+    wager.add(new Win(1,i,"football"));
+  }
 
   tinder();
 }

@@ -17,7 +17,6 @@ class Menus
 
   void statusBar()
   {
-
     float barHeight=height/20;
 
     stroke(#999999);
@@ -112,6 +111,7 @@ class Menus
 
   void football()
   {
+    stroke(#000000);
     fill(#00BDFF);
     rect(width/2, -1, (width/2)+1, height+1);
 
@@ -169,6 +169,7 @@ class Menus
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////h
   void horse()
   {
+    stroke(#000000);
     fill(#00C42C);
     rect(width/2, -1, (width/2)+1, height+1);
 
@@ -204,44 +205,52 @@ class Menus
 
   void bet()
   {
+    stroke(#000000);
     fill(#DE3838);
     rect(width/2, -1, (width/2)+1, height+1);
     fill(#00A0DE);
     rect(0, -1, (width/2)+1, height+1);
     textFont(info, 30);
-    textAlign(CENTER);
+
     fill(#000000);
     if (wager.size()>=10)
     {
-      text("Your Bottom 10 bets", (width*0.75), (height/5));
+      textAlign(CENTER);
+      text("Your Bottoms 10 bets", (width*0.75), (height/5));
 
-      for (int i=0; i<0; i++)
+      for (int i=0; i<10; i++)
       {
-        noFill();
-        rect(width/2, (height/4)+(i*50)-35, (width/2), 50);
+        line(width*0.501, (height/4)+(i*50)-35, width, (height/4)+(i*50)-35);
+        textAlign(RIGHT);
+        text(wager.get(i).winnings, (width*0.49), (height/4)+(i*50));
+        textAlign(CENTER);
+        text(wager.get(i).odds, (width*0.25), (height/4)+(i*50));
+        textAlign(LEFT);
+        text(wager.get(i).stake, (width*0.01), (height/4)+(i*50));
+      }
+
+      textAlign(CENTER);
+      fill(#000000);
+      text("Your Top 10 bets", (width*0.25), (height/5));
+
+      for (int i=wager.size()-1; i>wager.size()-11; i--)
+      {
+        line(0, (height/4)+(wager.size()-1-i)*(50)-35, width/2, (height/4)+ (wager.size()-1-i)*(50)-35);
+        textAlign(RIGHT);
+        println(wager.size()-i);
+        text(wager.get(i).winnings, (width*0.99), (height/4)+((wager.size()-1-i)*50));
+        textAlign(CENTER);
+        text(wager.get(i).odds, (width*0.75), (height/4)+((wager.size()-1-i)*50));
+        textAlign(LEFT);
+        text(wager.get(i).stake, (width*0.5), (height/4)+((wager.size()-1-i)*50));
+        
+        line(width*0.501, (height/4)+(i*50)-35, width, (height/4)+(i*50)-35);
         textAlign(RIGHT);
         text(wager.get(i).winnings, (width*0.99), (height/4)+(i*50));
         textAlign(CENTER);
         text(wager.get(i).odds, (width*0.75), (height/4)+(i*50));
         textAlign(LEFT);
-        text(wager.get(i).stake, (width*0.75), (height/4)+(i*50));
-      }
-
-      textFont(info, 30);
-      textAlign(CENTER);
-      fill(#000000);
-      text("Your Top 10 bets", (width*0.25), (height/5));
-
-      for (int i=wager.size(); i>wager.size()-10; i--)
-      {
-        noFill();
-        rect(0, (height/4)+(i*50)-35, 0, 50);
-        textAlign(RIGHT);
-        text(wager.get(i).winnings, (width*0.01), (height/4)+(i*50));
-        textAlign(CENTER);
-        text(wager.get(i).odds, (width*0.25), (height/4)+(i*50));
-        textAlign(LEFT);
-        text(wager.get(i).stake, (width*0.25), (height/4)+(i*50));
+        text(wager.get(i).stake, (width*0.5), (height/4)+(i*50));
       }
     } else
     {
