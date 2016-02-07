@@ -6,7 +6,10 @@ class Menus
   PFont title;
   PFont info;
   int selected;
-  PVector pb , t;
+  PVector pb, t;
+  color h, f, b, p;
+  ArrayList<Integer> picks;
+
   Menus()
   {
     photo = loadImage("horses1.jpg");
@@ -16,6 +19,12 @@ class Menus
     ouline=3;
     pb = new PVector( (width*0.75), (height/4)+(11*50)  );
     t = new PVector( (width*0.75), (height/5)  );
+    picks= new ArrayList<Integer>();
+
+    h =  color(#00C42C);
+    f =  color(#00BDFF);
+    b =  color(#DE3838);
+    p =  color(#EE00EE);
   }
 
   void statusBar()
@@ -31,6 +40,29 @@ class Menus
     textFont(info, 25);
 
     text("€" + save.money + " Week " + save.week, width-10, barHeight/2.6);
+
+    strokeWeight( 2 );
+    stroke(#ffffff);
+    noFill();
+    beginShape();
+    vertex(50, 10);
+    vertex(60, 10);
+    vertex(70, 15);
+    vertex(70, 30);
+    vertex(50, 30);
+    vertex(50, 10);
+    endShape();
+
+    beginShape();
+    vertex(55, 30);
+    vertex(55, 21);
+    vertex(65, 21);
+    vertex(65, 30);
+    endShape();
+
+    line(10, height/40, 30, height/40 + height/50);
+    line(10, height/40, 30, height/40 - height/50);
+    strokeWeight( 1 );
   }
 
 
@@ -87,20 +119,19 @@ class Menus
     text("2016", width/2, height*(0.3));
     stroke(#226644);
 
+
+    stroke(#ffffff);
     //horse
-
-
-    fill(#006600);
+    fill(h);
     rect(width/2, height/3, -width/3, height/4);
-
     //football
-    fill(#00BDFF);
+    fill(f);
     rect(width/2, height/3, width/3, height/4);
     //bets
-    fill(#0000ff);
+    fill(b);
     rect(width/2, (height/3)*2, -width/3, height/4);
     //proceed
-    fill(#660066);
+    fill(p);
     rect(width/2, (height/3)*2, width/3, height/4);
 
     textFont(info, 40);
@@ -115,7 +146,7 @@ class Menus
   void football()
   {
     stroke(#000000);
-    fill(#00BDFF);
+    fill(f);
     rect(width/2, -1, (width/2)+1, height+1);
 
     textFont(info, 30);
@@ -128,7 +159,7 @@ class Menus
       rect(width/2, (height/4)+(i*50)-35, (width/2), 50);
       text(league.get(fixtures.get(i).team1).current_odds +"    " + league.get(fixtures.get(i).team1).name +   " vs "  + league.get(fixtures.get(i).team2).name + "    "+ league.get(fixtures.get(i).team2).current_odds, (width*0.75), (height/4)+(i*50));
     }
-    text("Place bet", pb.x , pb.y );
+    text("Place bet", pb.x, pb.y );
 
 
     int pick =1;
@@ -173,7 +204,7 @@ class Menus
   void horse()
   {
     stroke(#000000);
-    fill(#00C42C);
+    fill(h);
     rect(width/2, -1, (width/2)+1, height+1);
 
     textFont(info, 30);
@@ -190,8 +221,8 @@ class Menus
       textAlign(CENTER);
       text(equine.get(i).odds, (width*0.75), (height/4)+(i*50));
     }
-    
-    text("Place bet", pb.x , pb.y );
+
+    text("Place bet", pb.x, pb.y );
 
     int pick =9;
     fill(#ffff00);
@@ -210,7 +241,7 @@ class Menus
   void bet()
   {
     stroke(#000000);
-    fill(#DE3838);
+    fill(b);
     rect(width/2, -1, (width/2)+1, height+1);
     fill(#00A0DE);
     rect(0, -1, (width/2)+1, height+1);
@@ -252,6 +283,24 @@ class Menus
     {
       textAlign(CENTER);
       text("You must have atleast ten bets to see your record", (width*0.50), (height/5));
+    }
+  }
+
+  void addPick(int p)
+  {
+    boolean add=true;;
+    for (int i=0; i<picks.size(); i++)
+    {
+      if (picks.get(i)==p) 
+      {
+        add = false;
+        picks.remove(i);
+      }
+    }
+
+    if (add)
+    {
+      picks.add(p);
     }
   }
 }
