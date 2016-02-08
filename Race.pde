@@ -1,18 +1,20 @@
 class Race
 {
   int winner;
-  int[] jockies;
-  int[] horses;
+  float[] horses;
 
-  Race(ArrayList<Integer> horses, ArrayList<Integer> jockies)
+  Race()
   {
-    this.horses = new int[horses.size()];
-    this.jockies = new int[jockies.size()];
-
-    for (int i=0; i< jockies.size(); i++)
+    horses = new float[10]; 
+    for (int i=0; i< 10; i++)
     {
-      this.horses[i] = horses.get(i);
-      this.jockies[i] = jockies.get(i);
+      horses[i] = equine.get(i).speed-equine.get(i).weight +rider.get(i).speed-rider.get(i).weight;
+      
+      equine.get(i).setSkill(horses[i]);
+    
     }
+    
   }
+
+  
 }

@@ -99,7 +99,7 @@ class Menus
 
   void mainMenu()
   {
-
+    acca.clear();
     textFont(title, 150);
     fill(0);
     textAlign(CENTER, CENTER);
@@ -162,6 +162,8 @@ class Menus
     }
     text("Place bet", pb.x, pb.y );
 
+
+    fill(#ffff00);
     for (int i=0; i<acca.size(); i++)
     {
       if (acca.get(i)%2==0)
@@ -171,10 +173,7 @@ class Menus
       {
         ellipse(width-(width/20), (height/4)+((acca.get(i)/2)*50)-15, 20, 20);
       }
-      // println(acca.get(i));
     }
-
-
 
 
     textAlign(LEFT);
@@ -228,7 +227,7 @@ class Menus
 
     text("Place bet", pb.x, pb.y );
 
-
+    fill(#ffff00);
     ellipse((width/2)+(width/20), (height/4)+((pick)*50)-15, 20, 20);
 
     textAlign(LEFT);
@@ -238,6 +237,14 @@ class Menus
     for (int j=0; j<10; j++)
     {
       text(rider.get(j).name, (width/20), (height/4)+(j*50));
+      strokeWeight(10);
+      stroke(#936A49);
+      line(10+(width*0.3), 10+(height*0.20)+(j*50), 10+(width*0.3), 35+(height*0.20)+(j*50));
+      line(50+(width*0.3), 10+(height*0.20)+(j*50), 50+(width*0.3), 35+(height*0.20)+(j*50));
+      line(10+(width*0.3), 10+(height*0.20)+(j*50), 50+(width*0.3), 10+(height*0.20)+(j*50));
+      line(50+(width*0.3), 10+(height*0.20)+(j*50), 60+(width*0.3), -10+(height*0.20)+(j*50));
+      stroke(rider.get(j).colour);
+      line(60+(width*0.3), -10+(height*0.20)+(j*50), 70+(width*0.3), 2+(height*0.20)+(j*50));
     }
   }
 
@@ -291,7 +298,6 @@ class Menus
 
   void addPick(int p, boolean a)
   {
-
     if (a)
     {
       boolean add=true;
@@ -307,22 +313,18 @@ class Menus
           {
             add = false;
             rem=true;
-            println(1);
           }
           if (p%2==1 && acca.get(i)==p-1 )
           {
             rem=true;
-            println(2);
           }
           if (p%2==0 && acca.get(i)==p+1 )
           {
             rem=true;
-            println(3);
           }
 
           if (rem)
           {
-
             acca.remove(i);
           }
           rem=false;

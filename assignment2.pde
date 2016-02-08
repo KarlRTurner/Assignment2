@@ -3,13 +3,13 @@ void setup()
   size(1600, 900);
 
   wager= new ArrayList<Bet>();
-  GP = new ArrayList<Race>();
   rider = new ArrayList<Jockey>();
   equine = new ArrayList<Horse>();
   fixtures = new ArrayList<Match>();
   league = new ArrayList<Team>();
   start = false;
-  intro = new Menus();
+  gui = new Menus();
+
 
   String[] save1 = loadStrings("savefile.txt");
   if (save1 == null)
@@ -26,11 +26,7 @@ void setup()
     league.add(new Team(i+1, line[i]));
   }
 
-  for (int i=0; i<10; i++)
-  {
-    equine.add(new Horse());
-    rider.add(new Jockey());
-  }
+
 
   for (int i=0; i<20; i++)
   {
@@ -41,11 +37,11 @@ void setup()
 }
 int week;
 boolean start;
-Menus intro;
+Menus gui;
 User save;
 Bet live;
 ArrayList<Bet> wager;
-ArrayList<Race> GP;
+Race GP;
 ArrayList<Jockey> rider;
 ArrayList<Horse> equine;
 ArrayList<Match> fixtures;
@@ -57,28 +53,33 @@ void draw()
 
   if (start==false)
   {
-    intro.splash();
+    gui.splash();
   } else
   {
-    switch(intro.selected) {
+    switch(gui.selected) {
     case 0: 
-      intro.mainMenu();
-      intro.statusBar();
+      gui.mainMenu();
+      gui.statusBar();
       break;
     case 1: 
-      intro.horse();
-      intro.statusBar();
+      gui.horse();
+      gui.statusBar();
       break;
     case 2: 
-      intro.football();
-      intro.statusBar();
+      gui.football();
+      gui.statusBar();
       break;
     case 3: 
-      intro.bet();
-      intro.statusBar();
+      gui.bet();
+      gui.statusBar();
       break;
     case 4: 
       tinder();
+      for (int i=0; i<10; i++)
+      {
+        equine.get(i).move(i);
+        equine.get(i).display(rider.get(i).colour);
+      }
       break;
     }
   }
@@ -124,6 +125,14 @@ void tinder() {
     g=0;
   }
 
+  for (int i=0; i<10; i++)
+  {
+    equine.add(new Horse(i));
+    rider.add(new Jockey());
+  }
+  GP = new Race();
+
+
   save.week++;
 }
 
@@ -131,9 +140,8 @@ void keyPressed()
 {
   if (start == false)
   {
-    println(start);
     start=true;
-    intro.selected=0;
+    gui.selected=0;
   }
 }
 
@@ -141,31 +149,31 @@ void mousePressed()
 {
   if (start == true )
   {
-    if (intro.selected==0)
+    if (gui.selected==0)
     {
       if (mouseX> (width/2)-(width/3) && mouseY> height/3 && mouseX < width/2 && mouseY < (height/3) + (height/4))
       {
-        intro.selected=1;
+        gui.selected=1;
       }
       if (mouseX>width/2  && mouseY> height/3 && mouseX < (width/2)+(width/3) && mouseY < (height/3) + (height/4))
       {
-        intro.selected=2;
+        gui.selected=2;
       }
       if (mouseX> (width/2)-(width/3)  && mouseY> (height/3)*2 && mouseX < width/2 && mouseY < ((height/3) * 2) + (height/4))
       {
-        intro.selected=3;
+        gui.selected=3;
       }
       if (mouseX>width/2  && mouseY> (height/3)*2 && mouseX < (width/2)+(width/3) && mouseY < ((height/3) * 2) + (height/4))
       {
-        intro.selected=4;
+        gui.selected=4;
       }
     } else
     {
       if (mouseX> 0 && mouseY> 0 && mouseX < 30 && mouseY < height/20)
       {
-        intro.selected=0;
+        gui.selected=0;
       }
-      if (intro.selected==1)
+      if (gui.selected==1)
       {
 
         if (mouseX> width/2 && mouseY> (height/4)-35 && mouseX < width && mouseY < (height/4)+(10*50)+35)
@@ -174,12 +182,12 @@ void mousePressed()
           {
             if (mouseY> (height/4)+(i*50)-35 && mouseY < (height/4)+((i+1)*50)-35 && mouseX> width/2 && mouseX < width*0.75)
             {
-              intro.addPick(i,false);
+              gui.addPick(i, false);
             }
           }
         }
       }
-      if (intro.selected==2)
+      if (gui.selected==2)
       {
         if (mouseX> width/2 && mouseY> (height/4)-35 && mouseX < width && mouseY < (height/4)+(10*50)+35)
         {
@@ -190,11 +198,11 @@ void mousePressed()
             {
               if (mouseX> width/2 && mouseX < width*0.75)
               {
-                intro.addPick(p,true);
+                gui.addPick(p, true);
               }
               if (mouseX> width*0.75 && mouseX < width)
               {
-                intro.addPick(p+1,true);
+                gui.addPick(p+1, true);
               }
             }
             p+=2;

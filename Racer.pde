@@ -10,5 +10,7 @@ abstract class Racer
   {
     speed = random(1, 10);
     id = (int)random(0, 99);
+    
+    
   }
 }//end class
