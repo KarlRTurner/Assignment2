@@ -165,7 +165,7 @@ void mousePressed()
       {
         intro.selected=0;
       }
-      if (intro.selected==2)
+      if (intro.selected==1)
       {
 
         if (mouseX> width/2 && mouseY> (height/4)-35 && mouseX < width && mouseY < (height/4)+(10*50)+35)
@@ -174,12 +174,12 @@ void mousePressed()
           {
             if (mouseY> (height/4)+(i*50)-35 && mouseY < (height/4)+((i+1)*50)-35 && mouseX> width/2 && mouseX < width*0.75)
             {
-              intro.addPick(i);
+              intro.addPick(i,false);
             }
           }
         }
       }
-      if (intro.selected==1)
+      if (intro.selected==2)
       {
         if (mouseX> width/2 && mouseY> (height/4)-35 && mouseX < width && mouseY < (height/4)+(10*50)+35)
         {
@@ -190,11 +190,11 @@ void mousePressed()
             {
               if (mouseX> width/2 && mouseX < width*0.75)
               {
-                intro.addPick(p);
+                intro.addPick(p,true);
               }
               if (mouseX> width*0.75 && mouseX < width)
               {
-                intro.addPick(p-1);
+                intro.addPick(p+1,true);
               }
             }
             p+=2;

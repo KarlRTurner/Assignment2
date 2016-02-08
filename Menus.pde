@@ -8,7 +8,8 @@ class Menus
   int selected;
   PVector pb, t;
   color h, f, b, p;
-  ArrayList<Integer> picks;
+  ArrayList<Integer> acca;
+  int pick;
 
   Menus()
   {
@@ -19,7 +20,7 @@ class Menus
     ouline=3;
     pb = new PVector( (width*0.75), (height/4)+(11*50)  );
     t = new PVector( (width*0.75), (height/5)  );
-    picks= new ArrayList<Integer>();
+    acca= new ArrayList<Integer>();
 
     h =  color(#00C42C);
     f =  color(#00BDFF);
@@ -161,15 +162,18 @@ class Menus
     }
     text("Place bet", pb.x, pb.y );
 
-
-    int pick =1;
-    if (pick%2==0)
+    for (int i=0; i<acca.size(); i++)
     {
-      ellipse((width/2)+(width/20), (height/4)+((pick/2)*50)-15, 20, 20);
-    } else
-    {
-      ellipse(width-(width/20), (height/4)+((pick/2)*50)-15, 20, 20);
+      if (acca.get(i)%2==0)
+      {
+        ellipse((width/2)+(width/20), (height/4)+((acca.get(i)/2)*50)-15, 20, 20);
+      } else
+      {
+        ellipse(width-(width/20), (height/4)+((acca.get(i)/2)*50)-15, 20, 20);
+      }
+      // println(acca.get(i));
     }
+
 
 
 
@@ -224,8 +228,7 @@ class Menus
 
     text("Place bet", pb.x, pb.y );
 
-    int pick =9;
-    fill(#ffff00);
+
     ellipse((width/2)+(width/20), (height/4)+((pick)*50)-15, 20, 20);
 
     textAlign(LEFT);
@@ -286,21 +289,53 @@ class Menus
     }
   }
 
-  void addPick(int p)
+  void addPick(int p, boolean a)
   {
-    boolean add=true;;
-    for (int i=0; i<picks.size(); i++)
-    {
-      if (picks.get(i)==p) 
-      {
-        add = false;
-        picks.remove(i);
-      }
-    }
 
-    if (add)
+    if (a)
     {
-      picks.add(p);
+      boolean add=true;
+      boolean rem=false;
+      if (acca.size()==0)
+      {
+        acca.add(p);
+      } else
+      {
+        for (int i=0; i<acca.size(); i++)
+        {
+          if (acca.get(i)==p) 
+          {
+            add = false;
+            rem=true;
+            println(1);
+          }
+          if (p%2==1 && acca.get(i)==p-1 )
+          {
+            rem=true;
+            println(2);
+          }
+          if (p%2==0 && acca.get(i)==p+1 )
+          {
+            rem=true;
+            println(3);
+          }
+
+          if (rem)
+          {
+
+            acca.remove(i);
+          }
+          rem=false;
+        }
+        if (add)
+        {
+          acca.add(p);
+          add=true;
+        }
+      }
+    } else
+    {
+      pick=p;
     }
   }
 }
