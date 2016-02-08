@@ -296,6 +296,45 @@ class Menus
     }
   }
 
+  void results()
+  {
+    stroke(#000000);
+    fill(f);
+    rect(width/2, -1, (width/2)+1, height+1);
+    fill(h);
+    rect(0, -1, (width/2)+1, height+1);
+    textFont(info, 30);
+
+    fill(#000000);
+    if (wager.size()>=10)
+    {
+      textAlign(CENTER);
+      text("Game week "+ (save.week%40) +" results", t.x, t.y);
+
+      for (int i=0; i<10; i++)
+      {
+        noFill();
+        rect(width/2, (height/4)+(i*50)-35, (width/2), 50);
+        text(league.get(fixtures.get(i).team1).name +"    " +  fixtures.get(i).score1   + " - "+ fixtures.get(i).score2  + "    "+league.get(fixtures.get(i).team2).name, (width*0.75), (height/4)+(i*50));
+      }
+
+      textAlign(CENTER);
+      fill(#000000);
+      text("Results", t.x - width/2, t.y);
+      for (int i=0; i<10; i++)
+      {
+        noFill();
+        rect(width/2, (height/4)+(i*50)-35, (width/2), 50);
+        textAlign(LEFT);
+        text( i+1 + ". " + equine.get(i).name , (width*0.01), (height/4)+(i*50));
+      }
+    } else
+    {
+      textAlign(CENTER);
+      text("You must have atleast ten bets to see your record", (width*0.50), (height/5));
+    }
+  }
+
   void addPick(int p, boolean a)
   {
     if (a)

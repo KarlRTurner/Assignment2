@@ -51,7 +51,7 @@ void draw()
 {
   background(#f0f0f0);
 
-  if (start==false)
+  /*if (start==false)
   {
     gui.splash();
   } else
@@ -82,7 +82,9 @@ void draw()
       }
       break;
     }
-  }
+    
+  }*/
+  gui.results();
 }//draw
 
 void tinder() {
