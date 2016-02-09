@@ -23,6 +23,16 @@ class Team
 
   void gameday(int score1, int score2)
   {
+    if (score1> score2)
+    {
+      wins++;
+    } else if (score1== score2)
+    {
+      draws++;
+    } else
+    {
+      losses++;
+    }
     current_odds=random(1.00, 2.00);
     pts = (wins*3 )+(draws);
 

@@ -1,12 +1,13 @@
 class Win extends Bet
 {
-  int pick;
+  
 
-  Win(int pick, float stake, String sport)
+  Win(String pickname,int pick, float stake )
   {
-    this.pick = pick;
+    this.pick=pick;
+    this.pickname = pickname;
     super.stake = stake;
-    super.sport=sport;
+    odds=equine.get(pick).odds;
   }
 
   float payout()

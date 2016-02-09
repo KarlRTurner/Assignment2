@@ -4,6 +4,9 @@ abstract class Bet
   float odds;
   float winnings;
   String sport;
+  int[] picks;
+  int pick;
+  String pickname;
   int week;
 
   Bet()

@@ -24,13 +24,13 @@ class Match
 
     if (score1> score2)
     {
-      return team1;
+      return 0;
     } else if (score1== score2)
     {
       return -1;
     } else
     {
-      return team2;
+      return 1;
     }
   }
 }

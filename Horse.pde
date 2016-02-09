@@ -36,5 +36,6 @@ class Horse extends Racer
     stroke(c);
     line(60, -10, 70, 2);
     popMatrix();
+    strokeWeight(1);
   }
 }

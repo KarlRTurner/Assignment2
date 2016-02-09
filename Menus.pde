@@ -10,6 +10,9 @@ class Menus
   color h, f, b, p;
   ArrayList<Integer> acca;
   int pick;
+  ArrayList<Integer> amount;
+  int c=0;
+  boolean err;
 
   Menus()
   {
@@ -21,6 +24,10 @@ class Menus
     pb = new PVector( (width*0.75), (height/4)+(11*50)  );
     t = new PVector( (width*0.75), (height/5)  );
     acca= new ArrayList<Integer>();
+
+    c=0;
+    amount = new ArrayList<Integer>();
+    err=false;
 
     h =  color(#00C42C);
     f =  color(#00BDFF);
@@ -306,32 +313,98 @@ class Menus
     textFont(info, 30);
 
     fill(#000000);
-    if (wager.size()>=10)
-    {
-      textAlign(CENTER);
-      text("Game week "+ (save.week%40) +" results", t.x, t.y);
 
-      for (int i=0; i<10; i++)
-      {
-        noFill();
-        rect(width/2, (height/4)+(i*50)-35, (width/2), 50);
-        text(league.get(fixtures.get(i).team1).name +"    " +  fixtures.get(i).score1   + " - "+ fixtures.get(i).score2  + "    "+league.get(fixtures.get(i).team2).name, (width*0.75), (height/4)+(i*50));
-      }
+    textAlign(CENTER);
+    text("Game week "+ (save.week%40) +" results", t.x, t.y);
 
-      textAlign(CENTER);
-      fill(#000000);
-      text("Results", t.x - width/2, t.y);
-      for (int i=0; i<10; i++)
-      {
-        noFill();
-        rect(width/2, (height/4)+(i*50)-35, (width/2), 50);
-        textAlign(LEFT);
-        text( i+1 + ". " + equine.get(i).name , (width*0.01), (height/4)+(i*50));
-      }
-    } else
+    for (int i=0; i<10; i++)
     {
-      textAlign(CENTER);
-      text("You must have atleast ten bets to see your record", (width*0.50), (height/5));
+      noFill();
+      rect(width/2, (height/4)+(i*50)-35, (width/2), 50);
+      text(league.get(fixtures.get(i).team1).name +"    " +  fixtures.get(i).score1   + " - "+ fixtures.get(i).score2  + "    "+league.get(fixtures.get(i).team2).name, (width*0.75), (height/4)+(i*50));
+    }
+
+    textAlign(CENTER);
+    fill(#000000);
+    text("Results", t.x - width/2, t.y);
+    for (int i=0; i<10; i++)
+    {
+      noFill();
+      rect(width/2, (height/4)+(i*50)-35, (width/2), 50);
+      textAlign(LEFT);
+      text( i+1 + ". " + equine.get(i).name, (width*0.01), (height/4)+(i*50));
+    }
+  }
+
+  void betBox(char s)
+  {
+
+    fill(#000000, 155);
+    rect(0, 0, width, height);
+    stroke(#000000);
+    fill(#ffffff);
+    rect(width/3, height/3, width/3, height/3);
+    fill(#000000);
+    textAlign(CENTER);
+    text("Enter Amount to Bet", (width/2), (height/2)-80);
+    if (keyPressed)
+    {
+      if (key>47 && key<58 && c<5)
+      {
+        int num = Character.getNumericValue(key);
+        amount.add(num);
+        c++;
+      }
+      if (key==8 && c>0)
+      {
+        c--;
+        amount.remove(c);
+      }
+      if (key==10)
+      {
+        int amt =0;
+        for (int i=0; i<amount.size(); i++)
+        {
+          amt = amt + amount.get(i)* (int)pow( 10, amount.size()-i-1);
+        }
+        if (amt>save.money && amt>0)
+        {
+          err=true;
+        } else
+        {
+          err=false;
+          if (s=='f')
+          {
+            if (acca.size()>0)
+            {
+              wager.add( new Acca(acca, amt));
+              save.money=save.money-amt;
+            }
+            selected=2;
+          } else
+          {
+            wager.add( new Win(equine.get(pick).name, pick, amt));
+            save.money=save.money-amt;
+            selected=1;
+          }
+        }
+        amount.clear();
+        c=0;
+      }
+      key=0;
+    }
+    if (err)
+    {
+      fill(#aa0000);
+      text("insufficient funds", (width/2), (height/2)+40);
+    } 
+
+
+    fill(#00aa00);
+    text("€", (width/2)-(15), height/2);
+    for (int i=0; i<amount.size(); i++)
+    {
+      text(amount.get(i), (width/2)+(i*15), height/2);
     }
   }
 
