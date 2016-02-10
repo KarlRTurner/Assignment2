@@ -6,6 +6,7 @@ class Acca extends Bet
   {
     this.picks = new int[pick.size()];
     
+    //store the picks and get the odds
     for (int i=0; i<picks.length; i++)
     {
       picks[i] = pick.get(i);
@@ -27,7 +28,6 @@ class Acca extends Bet
   float payout()
   {
     winnings=(odds*stake)+stake;
-    println(winnings);
     return winnings;
   }
 }

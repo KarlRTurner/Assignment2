@@ -2,6 +2,7 @@ void setup()
 {
   size(1600, 900);
 
+  //set up the classes
   wager= new ArrayList<Bet>();
   rider = new ArrayList<Jockey>();
   equine = new ArrayList<Horse>();
@@ -10,7 +11,7 @@ void setup()
   start = false;
   gui = new Menus();
 
-
+  //load in the savfile if one exists else make new user
   String[] save1 = loadStrings("savefile.txt");
   if (save1 == null)
   {
@@ -20,12 +21,17 @@ void setup()
     save = new User(save1[0], save1[1]);
   }
 
+
+  //make up the league of teams
   String[] line = loadStrings("teams.txt");
   for (int i=0; i<line.length; i++)
   {
     league.add(new Team(i+1, line[i]));
   } 
+
+  //save the game
   save.floppyDisk();
+  //make fixtures and a horse race
   tinder();
 }
 int week;
@@ -43,6 +49,7 @@ void draw()
 {
   background(#f0f0f0);
 
+  //naviagtion of the menus
   if (start==false)
   {
     gui.splash();
@@ -66,14 +73,15 @@ void draw()
       gui.statusBar();
       break;
     case 4: 
-
+      //display the horse race
       background(#00aa00);
-      for (int i=0; i<10; i++)
+      for (int i=0; i<equine.size(); i++)
       {
 
-        equine.get(i).move(i);
+        equine.get(i).move();
         equine.get(i).display(rider.get(i).colour);
-        if (equine.get(i).place.x>width+100)
+        //after race is done display the results
+        if (equine.get(i).place.x>width+width/4)
         {
           weekend();
           gui.selected=5;
@@ -98,9 +106,11 @@ void draw()
   }
 }//draw
 
+//method to do the results of the weekends fixtures and races
 void weekend()
 {
 
+  //sort the horses to see who has the hghest skill to see who won
   int winner[] = new int[10];
   GP.winner();
   Horse temp = new Horse(0);
@@ -114,32 +124,37 @@ void weekend()
     }
   }
 
+  //run each match of the weekend
   for (int i = 0; i < 10; i++)
   {
     winner[i]=(i*2)+fixtures.get(i).whoWon();
   }
 
+//check all bets made to see if they were placed this week
   for (int k=0; k<wager.size(); k++)
   {
-    println(winner[0]);
+    //check if they are accas
     if (wager.get(wager.size()-1-k).week==save.week &&  wager.get(wager.size()-1-k) instanceof Acca )
     {
       int win =0;
+      //check through the picks to see if the user won
       for (int i = 0; i < wager.get(wager.size()-1-k).picks.length; i++)
       {
         for (int j =0; j < 10; j++)
           if (wager.get(wager.size()-1-k).picks[i]==winner[j])
           {
-            println(winner[0]);
             win++;
           }
       }
+      //check if all predictions were right
       if (win==wager.get(wager.size()-1-k).picks.length)
       {
         save.money+=wager.get(wager.size()-1-k).payout();
       }
+      //check if they had a bet for this week
     } else if (wager.get(wager.size()-1-k).week==save.week &&  wager.get(wager.size()-1-k) instanceof Win )
     {
+      //check if they won
       if (wager.get(wager.size()-1-k).pickname==equine.get(0).name)
       {
         save.money+=wager.get(wager.size()-1-k).payout();
@@ -149,10 +164,12 @@ void weekend()
 }
 
 void tinder() {
-
+//clear the previous week data
   fixtures.clear();
   equine.clear();
   rider.clear();
+  
+  //match making algorthitm
   for (int i=0; i<league.size(); i+=2)
   {
 
@@ -167,6 +184,7 @@ void tinder() {
     }
   }
 
+// sort the bets to see the rankings
   Bet temp;
   for (int i = 1; i < equine.size(); i++) {
     for (int j = i; j > 0; j--) {
@@ -180,6 +198,7 @@ void tinder() {
 
   int g=0;
 
+//algorithm to make the league
   for (int i = 0; i < league.size(); i++)
   {
     for (int j = 0; j < league.size(); j++)
@@ -202,6 +221,7 @@ void tinder() {
     g=0;
   }
 
+//make new racers
   for (int i=0; i<10; i++)
   {
     equine.add(new Horse(i));
@@ -209,11 +229,13 @@ void tinder() {
   }
   GP = new Race();
 
+//new week new you
   save.week++;
 }
 
 void keyPressed()
 {
+  //start game
   if (start == false)
   {
     start=true;

@@ -303,7 +303,6 @@ class Menus
       {
         line(0, (height/4)+(wager.size()-1-i)*(50)-35, width/2, (height/4)+ (wager.size()-1-i)*(50)-35);
         textAlign(RIGHT);
-        println(wager.size()-i);
         text(wager.get(i).winnings, (width*0.99), (height/4)+((wager.size()-1-i)*50));
         textAlign(CENTER);
         text(wager.get(i).odds, (width*0.75), (height/4)+((wager.size()-1-i)*50));

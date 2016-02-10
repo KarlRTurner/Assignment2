@@ -1,4 +1,4 @@
-interface Player
+interface Player 
 {
   void floppyDisk();
 }

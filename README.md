@@ -1,2 +1,2 @@
 # Assignment2
-Electric boogaloo
+gambling simultor where you can bet on football matches and horse racing

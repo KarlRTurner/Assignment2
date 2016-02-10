@@ -3,8 +3,7 @@ class Horse extends Racer
   PVector place;
   float skill;
   Horse(float y)
-  {
-    
+  { 
     super();
     place = new PVector(0, (y*50)+(height/4));
     weight= random(900, 1100);
@@ -18,7 +17,7 @@ class Horse extends Racer
   {
     skill = map(spd, -245, 245, 1.0, 5.0);
   }
-  void move(int num)
+  void move()
   {
     place.x-= skill;
    
