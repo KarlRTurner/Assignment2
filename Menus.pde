@@ -50,7 +50,7 @@ class Menus
     fill(#ffffff);
     textFont(info, 25);
 
-    text("€" + save.money + " Week " + save.week, width-10, barHeight/2.6);
+    text("€" + nf(save.money,1,2) + " Week " + save.week, width-10, barHeight/2.6);
 
     strokeWeight( 2 );
     stroke(#ffffff);

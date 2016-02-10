@@ -166,7 +166,7 @@ void tinder() {
       fixtures.add(new Match(h, a));
     }
   }
-  
+
   Bet temp;
   for (int i = 1; i < equine.size(); i++) {
     for (int j = i; j > 0; j--) {
