@@ -13,6 +13,7 @@ class Menus
   ArrayList<Integer> amount;
   int c=0;
   boolean err;
+  String bets;
 
   Menus()
   {
@@ -28,6 +29,8 @@ class Menus
     c=0;
     amount = new ArrayList<Integer>();
     err=false;
+    
+    
 
     h =  color(#00C42C);
     f =  color(#00BDFF);
@@ -67,6 +70,17 @@ class Menus
     vertex(65, 21);
     vertex(65, 30);
     endShape();
+    bets="bets placed this week:";
+    for (int i=0; i<wager.size(); i++)
+    {
+    if(wager.get(wager.size()-i-1).week==save.week)
+    {
+     bets=bets+'$';
+    }
+    
+    }
+    textAlign(LEFT,CENTER);
+    text(bets, 100+(0*20),barHeight/2);
 
     line(10, height/40, 30, height/40 + height/50);
     line(10, height/40, 30, height/40 - height/50);
@@ -165,7 +179,7 @@ class Menus
     {
       noFill();
       rect(width/2, (height/4)+(i*50)-35, (width/2), 50);
-      text(league.get(fixtures.get(i).team1).current_odds +"    " + league.get(fixtures.get(i).team1).name +   " vs "  + league.get(fixtures.get(i).team2).name + "    "+ league.get(fixtures.get(i).team2).current_odds, (width*0.75), (height/4)+(i*50));
+      text(nf(league.get(fixtures.get(i).team1).current_odds ,1,2)+"    " + league.get(fixtures.get(i).team1).name +   " vs "  + league.get(fixtures.get(i).team2).name + "    "+ nf(league.get(fixtures.get(i).team2).current_odds ,1,2), (width*0.75), (height/4)+(i*50));
     }
     text("Place bet", pb.x, pb.y );
 
@@ -229,7 +243,7 @@ class Menus
       textAlign(RIGHT);
       text(equine.get(i).name, (width*0.99), (height/4)+(i*50));
       textAlign(CENTER);
-      text(equine.get(i).odds, (width*0.75), (height/4)+(i*50));
+      text(nf(equine.get(i).odds,1,2), (width*0.75), (height/4)+(i*50));
     }
 
     text("Place bet", pb.x, pb.y );
@@ -379,6 +393,7 @@ class Menus
             {
               wager.add( new Acca(acca, amt));
               save.money=save.money-amt;
+              acca.clear();
             }
             selected=2;
           } else

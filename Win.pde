@@ -8,6 +8,7 @@ class Win extends Bet
     this.pickname = pickname;
     super.stake = stake;
     odds=equine.get(pick).odds;
+    week=save.week;
   }
 
   float payout()

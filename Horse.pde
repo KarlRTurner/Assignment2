@@ -9,6 +9,7 @@ class Horse extends Racer
     place = new PVector(0, (y*50)+(height/4));
     weight= random(900, 1100);
     skill = random(900, 1100);
+    odds =random(1.0, 2.0);
     String[] line = loadStrings("horse.txt");
     name=line[(int)random(0, line.length)];
   }

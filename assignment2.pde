@@ -119,30 +119,30 @@ void weekend()
     winner[i]=(i*2)+fixtures.get(i).whoWon();
   }
 
-  if (wager.size()>0)
+  for (int k=0; k<wager.size(); k++)
   {
     println(winner[0]);
-    if (wager.get(wager.size()-1).week==save.week &&  wager.get(wager.size()-1) instanceof Acca )
+    if (wager.get(wager.size()-1-k).week==save.week &&  wager.get(wager.size()-1-k) instanceof Acca )
     {
       int win =0;
-      for (int i = 0; i < wager.get(wager.size()-1).picks.length; i++)
+      for (int i = 0; i < wager.get(wager.size()-1-k).picks.length; i++)
       {
         for (int j =0; j < 10; j++)
-          if (wager.get(wager.size()-1).picks[i]==winner[j])
+          if (wager.get(wager.size()-1-k).picks[i]==winner[j])
           {
             println(winner[0]);
             win++;
           }
       }
-      if (win==wager.get(wager.size()-1).picks.length)
+      if (win==wager.get(wager.size()-1-k).picks.length)
       {
-        save.money+=wager.get(wager.size()-1).payout();
+        save.money+=wager.get(wager.size()-1-k).payout();
       }
-    } else if (wager.get(wager.size()-1).week==save.week &&  wager.get(wager.size()-1) instanceof Win )
+    } else if (wager.get(wager.size()-1-k).week==save.week &&  wager.get(wager.size()-1-k) instanceof Win )
     {
-      if (wager.get(wager.size()-1).pickname==equine.get(0).name)
+      if (wager.get(wager.size()-1-k).pickname==equine.get(0).name)
       {
-        save.money+=wager.get(wager.size()-1).payout();
+        save.money+=wager.get(wager.size()-1-k).payout();
       }
     }
   }
